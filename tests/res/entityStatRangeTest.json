@@ -1,0 +1,11 @@
+{
+  "health": [10,51],
+  "armor": [10,51],
+  "strength": [10,51],
+  "magic": [10,51],
+  "luck": [10,51],
+  "agility": [10,51],
+  "awareness": [10,51],
+  "inventory": [],
+  "spells": []
+}

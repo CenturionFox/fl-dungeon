@@ -1,0 +1,9 @@
+{
+  "health": [90, 101],
+  "magic": [30, 50],
+  "strength": [10, 21],
+  "armor": 0,
+  "luck": 0,
+  "agility": 20,
+  "awareness": 60
+}

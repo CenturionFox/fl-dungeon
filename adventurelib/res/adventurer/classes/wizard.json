@@ -1,0 +1,22 @@
+{
+  "name": "Wizard",
+  "gold": 120,
+  "stats": {
+    "id": "{51B5B0B0-724E-4C94-A4C4-200DCAF64B4B}",
+    "name": "wizard.stats.1", 
+    "package": "adventurelib",
+    "resource": "res/adventurer/stats/wizard.json"
+  },
+  "description": "Wise and masterful in the use of magic, wizards excel at ranged combat and healing spells.\nHowever, they aren't as good at direct attacks, and their lower health pool can easily be the undoing of the inattentive.",
+  "starterkits": [
+    {
+      "id": "{91FDC454-762A-445C-B628-5FF448FC71EE}",
+      "name": "empty",
+      "package": "adventurelib",
+      "resource": "res/util/starterkit.empty.json",
+      "weight": 1
+    }
+  ]
+}
+
+

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "{63040A9A-087B-4259-BF63-5F275BDF4B44}",
+    "name": "adventurer.wizard", 
+    "package": "adventurelib",
+    "resource": "res/adventurer/classes/wizard.json"
+  },
+  {
+    "id": "{416540A2-CDB6-4FE7-9182-81A6F45798A9}",
+    "name": "adventurer.rogue",
+    "package": "adventurelib",
+    "resource": "res/adventurer/classes/rogue.json"
+  },
+  {
+    "id": "{5CAFD1D9-864A-43C5-A0A4-90D327D315F6}",
+    "name": "adventurer.paladin",
+    "package": "adventurelib",
+    "resource": "res/adventurer/classes/paladin.json"
+  },
+  {
+    "id": "{1E4D0113-01C6-4D6D-9188-2AF6E64A5CE9}",
+    "name": "adventurer.bard",
+    "package": "adventurelib",
+    "resource": "res/adventurer/classes/bard.json"
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "id": "{A7DD2AEC-B8BC-488B-8640-66DC97885B75}",
+    "name": "goblin.entitytype",
+    "entitydata": {
+      "id": "{689D2AE8-A4C5-4442-94D2-FDE4290567C4}",
+      "name": "goblin.entitydata",
+      "package": "adventurelib",
+      "resource": "res/entity/enemies/goblin.standard.json" 
+    } 
+  }
+]
