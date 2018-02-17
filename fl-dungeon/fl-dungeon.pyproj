@@ -11,7 +11,8 @@
     <OutputPath>.</OutputPath>
     <Name>fl-dungeon</Name>
     <RootNamespace>fl-dungeon</RootNamespace>
-    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>
+    </InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +29,9 @@
     <Compile Include="adventurelib\classes\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="adventurelib\localization.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="adventurelib\util.py">
       <SubType>Code</SubType>
     </Compile>
@@ -35,55 +39,26 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="fl_dungeon.py" />
-    <Compile Include="sketch\adventurelib_legacy\classes.py" />
-    <Compile Include="sketch\adventurelib_legacy\encounter.py" />
-    <Compile Include="sketch\adventurelib_legacy\util.py" />
-    <Compile Include="sketch\adventurelib_legacy\__init__.py" />
-    <Compile Include="sketch\adventure_example.py" />
-    <Compile Include="tests\__init__.py">
+    <Compile Include="adventurelib\tests\__init__.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Interpreter Include="env\">
-      <Id>env</Id>
-      <Version>3.6</Version>
-      <Description>env (Python 3.6 (64-bit))</Description>
-      <InterpreterPath>Scripts\python.exe</InterpreterPath>
-      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
-      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
-      <Architecture>X64</Architecture>
-    </Interpreter>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="adventurelib\" />
     <Folder Include="adventurelib\classes\" />
+    <Folder Include="adventurelib\res\locale\" />
     <Folder Include="adventurelib\res\" />
     <Folder Include="adventurelib\res\adventurerType\" />
     <Folder Include="adventurelib\res\adventurer\" />
     <Folder Include="adventurelib\res\adventurer\classes\" />
     <Folder Include="adventurelib\res\adventurer\stats\" />
     <Folder Include="adventurelib\res\util\" />
-    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\adventurelib\res\adventurer\" />
+    <Folder Include="adventurelib\res\adventurer\" />
     <Folder Include="adventurelib\res\entity\" />
     <Folder Include="adventurelib\res\entity\enemies\" />
     <Folder Include="adventurelib\res\items\" />
-    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\res\" />
-    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\res\classes\" />
-    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\res\items\" />
-    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\res\entity\" />
-    <Folder Include="sketch\" />
-    <Folder Include="res\" />
-    <Folder Include="res\classes\" />
-    <Folder Include="res\entity\" />
-    <Folder Include="res\items\" />
-    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\sketch\adventurelib_legacy\" />
-    <Folder Include="tests\" />
-    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\adventurelib\res\" />
-    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\adventurelib\res\adventurerType\" />
-    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\adventurelib\res\entity\" />
-    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\adventurelib\res\items\" />
-    <Folder Include="tests\res\" />
+    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\fl-dungeon\adventurelib\tests\" />
+    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\fl-dungeon\adventurelib\tests\res\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="adventurelib\res\adventurer\adventurerTypeList.json" />
@@ -92,14 +67,13 @@
     </Content>
     <Content Include="adventurelib\res\adventurer\stats\wizard.stats.json" />
     <Content Include="adventurelib\res\entity\entityTypeList.json" />
+    <Content Include="adventurelib\res\locale\advlib.en.json" />
     <Content Include="adventurelib\res\util\starterkit.empty.json" />
     <Content Include="adventurelib\res\util\stats.base.json">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="README.md" />
-    <Content Include="sketch\oldcode.txt" />
-    <Content Include="tests\res\entityStatRangeTest.json" />
-    <Content Include="tests\res\entityStatTest.json" />
+    <Content Include="adventurelib\tests\res\entityStatRangeTest.json" />
+    <Content Include="adventurelib\tests\res\entityStatTest.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

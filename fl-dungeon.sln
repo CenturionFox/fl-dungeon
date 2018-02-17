@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "fl-dungeon", "fl-dungeon.pyproj", "{BC20FC1C-5298-4922-BEB5-27F6BB6212E5}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "fl-dungeon", "fl-dungeon\fl-dungeon.pyproj", "{BC20FC1C-5298-4922-BEB5-27F6BB6212E5}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "flora-i18n", "flora-i18n\flora-i18n.pyproj", "{052F5BE6-7BB0-4060-8868-389B9190FDBD}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "adventure-example", "adventure-example\adventure-example.pyproj", "{8ACF45B5-08B8-480B-AF79-A7A1A994BB4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,10 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BC20FC1C-5298-4922-BEB5-27F6BB6212E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC20FC1C-5298-4922-BEB5-27F6BB6212E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{052F5BE6-7BB0-4060-8868-389B9190FDBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{052F5BE6-7BB0-4060-8868-389B9190FDBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ACF45B5-08B8-480B-AF79-A7A1A994BB4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ACF45B5-08B8-480B-AF79-A7A1A994BB4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

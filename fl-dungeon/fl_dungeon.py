@@ -12,3 +12,8 @@
 ##       And to the rest of the Floraverse discord community       ##
 #####################################################################
 
+import adventurelib
+from adventurelib.localization import t
+
+
+print(t("advlib.test"))

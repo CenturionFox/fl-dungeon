@@ -1,5 +1,5 @@
 from random import Random
-from adventurelib.classes.jsonobj import *
+from .jsonobj import *
 
 class Entity(object):
     """Base entity type"""
