@@ -1,0 +1,39 @@
+while not monster.IsDead:
+    print("A %s blocks your way! HP: %s" % (monster.Name, monster.HP))
+    choice = input("What will you do?\n(1) Attack\n(2) Stay Your Blade\n(3) Flee\n\nI will: ")
+    print("")
+    if str(choice) == "1":
+        player.attack(monster)
+    elif str(choice) == "2":
+        print("You stay your blade this round.")
+    elif str(choice) == "3":
+        print("You attempt to flee!")
+        time.sleep(3 + globalRandom.random() * 2 - 0.5)
+        if (globalRandom.random() / (1.0 + (1.1 * player.Luck))) < 0.01:
+            print("You manage to escape!")
+            break;
+        else:
+            print("The %s blocks your escape!" % monster.Name)
+    else:
+        print("You cannot do that now.")
+        print("")
+        if not monster.IsDead and (globalRandom.random() / 1.5) > 0.5:
+            print("As you hesitate, the %s attacks!" % monster.Name)
+            time.sleep(2 + globalRandom.random() * 2 - 0.5)
+            monster.attack(player)
+        continue
+    if not monster.IsDead:
+        print("")
+        time.sleep(2 + globalRandom.random() * 2 - 0.5)
+        print("The %s attacks!" % monster.Name)
+        time.sleep(2 + globalRandom.random() * 2 - 0.5)
+        monster.attack(player)
+    if player.IsDead:
+        print("You are slain by the %s" % monster.Name)
+        print("")
+        break
+    elif monster.IsDead:
+        print("You slay the %s!" % monster.Name)
+        print("")
+        break
+    time.sleep(1 + globalRandom.random() * 2 - 0.5)

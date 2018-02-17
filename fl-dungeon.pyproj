@@ -35,6 +35,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="fl_dungeon.py" />
+    <Compile Include="sketch\adventurelib_legacy\classes.py" />
+    <Compile Include="sketch\adventurelib_legacy\encounter.py" />
+    <Compile Include="sketch\adventurelib_legacy\util.py" />
+    <Compile Include="sketch\adventurelib_legacy\__init__.py" />
+    <Compile Include="sketch\adventure_example.py" />
     <Compile Include="tests\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -67,10 +72,12 @@
     <Folder Include="E:\Bridger\Source\Git\fl-dungeon\res\classes\" />
     <Folder Include="E:\Bridger\Source\Git\fl-dungeon\res\items\" />
     <Folder Include="E:\Bridger\Source\Git\fl-dungeon\res\entity\" />
+    <Folder Include="sketch\" />
     <Folder Include="res\" />
     <Folder Include="res\classes\" />
     <Folder Include="res\entity\" />
     <Folder Include="res\items\" />
+    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\sketch\adventurelib_legacy\" />
     <Folder Include="tests\" />
     <Folder Include="E:\Bridger\Source\Git\fl-dungeon\adventurelib\res\" />
     <Folder Include="E:\Bridger\Source\Git\fl-dungeon\adventurelib\res\adventurerType\" />
@@ -90,6 +97,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="README.md" />
+    <Content Include="sketch\oldcode.txt" />
     <Content Include="tests\res\entityStatRangeTest.json" />
     <Content Include="tests\res\entityStatTest.json" />
   </ItemGroup>
