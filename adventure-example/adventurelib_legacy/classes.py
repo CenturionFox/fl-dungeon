@@ -1,12 +1,12 @@
 import random
 import math
-import time
 import adventurelib_legacy.util as autil
 
 class Entity(object):
 
     def __init__(self, name):
         self._hp = 10
+        self._maxHP = 10
         self._steadfast = False
         self._random = random.Random()
         self._strength = 2
@@ -27,6 +27,7 @@ class Entity(object):
 
     def applyModifiers(self, modifiers):
         self._hp = self._hp + modifiers[0]
+        self._maxHP = self._hp
         self._strength = self._strength + modifiers[1]
         self._armor = self._armor + modifiers[2]
         self._luck = self._luck + modifiers[3]
@@ -61,7 +62,8 @@ class Entity(object):
             return target.damage(self._strength, critical=True)
         
         elif autil.randomWithMod(self._random, target.Luck) > 0.9:
-            print("The attack misses!")
+            if isinstance(target, PlayerCharacter):
+                print("The attack misses!")
             return target.damage(self._strength, miss=True)
 
         return target.damage(self.Strength)
@@ -90,6 +92,10 @@ class Entity(object):
     def HP(self, value):
         self._hp = value
 
+    @property
+    def MaxHealth(self):
+        return self._maxHP
+    
     @property
     def Strength(self):
         return self._strength
@@ -169,7 +175,7 @@ class PlayerCharacter(Entity):
         return self
         
     def damage(self, atk, critical=False, miss=False):
-        result = Entity.damage(self, atk, critical)
+        result = Entity.damage(self, atk, critical, miss)
         if(result[0]):
             print("You were attacked for %s damage! Your HP is now %s." % (result[1], self._hp))
         else:
@@ -181,12 +187,11 @@ class PlayerCharacter(Entity):
             print("You cannot attack that.")
             return (False,0)
         print("You attack the %s!" % target.Name)
-        time.sleep(2 + self._random.random() * 2 - 0.5)
         result = Entity.attack(self, target)
         if result[0]:
             print("You land the attack, dealing %s damage!" % (result[1]))
         else:
-            print("Your attack misses.")
+            print("Your attack misses...")
         return result
 
     def setSteadfast(self, value):

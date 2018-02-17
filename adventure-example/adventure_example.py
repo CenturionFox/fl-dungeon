@@ -16,6 +16,28 @@ monsters = [
     cl.Entity("Lesser Goblin").applyModifiers((-4,0,0,0,0,0))
 ]
 
-enc.battleLoop(player, enemies=monsters)
+if enc.battleLoop(player, enemies=monsters):
+    autil.clear()
+    print("You have been healed.")
+    player.HP = player.MaxHealth
+    print(player)
+    print("")
+    input("press ENTER to continue...")
 
+    monsters = [
+        cl.Entity("Greater Angelic Force").applyModifiers((12,6,8,10,8,-20)),
+        cl.Entity("Angelic Force").applyModifiers((0,1,0,10,0,-10)),
+        cl.Entity("Lesser Seraph 1").applyModifiers((-6,0,0,10,0,-5)),
+        cl.Entity("Lesser Seraph 2").applyModifiers((-6,0,0,10,0,-5)),
+        cl.Entity("Pitiful Frantic Seraph 1").applyModifiers((-9,-2,0,10,0,20)),
+        cl.Entity("Pitiful Frantic Seraph 2").applyModifiers((-9,-2,0,10,0,20)),
+        cl.Entity("Pitiful Frantic Seraph 3").applyModifiers((-9,-2,0,10,0,20)),
+        cl.Entity("Pitiful Frantic Seraph 4").applyModifiers((-9,-2,0,10,0,20))
+    ]
+
+    enc.battleLoop(player, enemies=monsters)
+
+autil.clear()
+print("")
 print("GAME OVER")
+print("")
