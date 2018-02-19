@@ -68,7 +68,9 @@
     <Folder Include="adventurelib\res\entity\" />
     <Folder Include="adventurelib\res\entity\enemies\" />
     <Folder Include="adventurelib\res\items\" />
+    <Folder Include="adventurelib\tests\" />
     <Folder Include="adventurelib\tests\classes\" />
+    <Folder Include="adventurelib\tests\res\" />
     <Folder Include="E:\Bridger\Source\Git\fl-dungeon\fl-dungeon\adventurelib\tests\" />
     <Folder Include="E:\Bridger\Source\Git\fl-dungeon\fl-dungeon\adventurelib\tests\res\" />
   </ItemGroup>
@@ -79,13 +81,14 @@
     </Content>
     <Content Include="adventurelib\res\adventurer\stats\wizard.stats.json" />
     <Content Include="adventurelib\res\entity\entityTypeList.json" />
-    <Content Include="adventurelib\res\locale\advlib.en.json" />
+    <Content Include="adventurelib\res\locale\en.json" />
     <Content Include="adventurelib\res\util\starterkit.empty.json" />
     <Content Include="adventurelib\res\util\stats.base.json">
       <SubType>Code</SubType>
     </Content>
     <Content Include="adventurelib\tests\res\entityStatRangeTest.json" />
     <Content Include="adventurelib\tests\res\entityStatTest.json" />
+    <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

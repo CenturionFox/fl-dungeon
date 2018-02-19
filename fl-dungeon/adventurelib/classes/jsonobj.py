@@ -1,11 +1,11 @@
 import abc
-import adventurelib.util as util
 import json
 import math
 import os
 import pkgutil
 import sys
 from random import Random
+from ..util import is_int
 
 class JsonDataObjectEncoder(json.JSONEncoder):
     """JSON utility class to encode the object as a dictionary"""
@@ -16,12 +16,13 @@ class JsonDataObjectEncoder(json.JSONEncoder):
 
 class JsonDataObject(abc.ABC):
     """Base type for json-defined objects"""
+
     def __init__(self, data=None, stream=None, rawData=None):
-        """Constructs the object from the json file"""
-        self.decode(JsonDataObject.get_json_dict(data, stream, rawData, self.__class__.get_default_data()))
+        self.decode(JsonDataObject.get_raw_data(data, stream, rawData, self.__class__.get_default_data()))
     
     @staticmethod
-    def get_json_dict(data, stream, rawData, default):
+    def get_raw_data(data, stream, rawData, default):
+        """Gets a dict from json data"""
         if data is not None:
             try:
                 return dict(json.loads(data))
@@ -62,7 +63,7 @@ class JsonIntegerRange(JsonDataObject):
     
     def __init__(self, data=None, stream=None, rawData=None):
         self._random = Random()
-        return super().__init__(data, stream, rawData)
+        return super(JsonIntegerRange, self).__init__(data, stream, rawData)
 
     @staticmethod
     def get_default_data():
@@ -73,7 +74,7 @@ class JsonIntegerRange(JsonDataObject):
         return int(JsonIntegerRange(rawData=data.get(statName,defaultValue)))
 
     def decode(self, data):
-        if util.isValidInt(data):
+        if is_int(data):
             self._min = self._max = int(data)
         elif isinstance(data, list) or isinstance(data, tuple):
             if len(data) == 0:
@@ -234,16 +235,16 @@ class JsonFileReference(JsonDataObject):
 
     @staticmethod
     def get_json_file_reference(data = None, stream = None, rawData = None):
-        json_dict = JsonDataObject.get_json_dict(data, stream, rawData, None)
-        if not isinstance(json_dict, dict):
+        raw_data = JsonDataObject.get_raw_data(data, stream, rawData, None)
+        if not isinstance(raw_data, dict):
             raise NotImplementedError()
 
-        if JsonFileReference.cached_entries.get(json_dict["id"]) is None:
-            fileReference = JsonFileReference(rawData = json_dict)
+        if JsonFileReference.cached_entries.get(raw_data["id"]) is None:
+            fileReference = JsonFileReference(rawData = raw_data)
             cached_entries[fileReference._id] = fileReference
             return fileReference
 
-        return cached_entries[json_dict["id"]]
+        return cached_entries[raw_data["id"]]
     
 
     def decode(self, data):
