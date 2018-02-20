@@ -62,7 +62,6 @@
     <Folder Include="adventurelib\classes\" />
     <Folder Include="adventurelib\jsonobj\" />
     <Folder Include="adventurelib\jsonobj\schema\" />
-    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\fl-dungeon\adventurelib\jsonobj\schema\" />
     <Folder Include="adventurelib\res\locale\" />
     <Folder Include="adventurelib\res\" />
     <Folder Include="adventurelib\res\adventurerType\" />
@@ -77,8 +76,6 @@
     <Folder Include="adventurelib\tests\" />
     <Folder Include="adventurelib\tests\classes\" />
     <Folder Include="adventurelib\tests\res\" />
-    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\fl-dungeon\adventurelib\tests\" />
-    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\fl-dungeon\adventurelib\tests\res\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="adventurelib\res\adventurer\adventurerTypeList.json" />
