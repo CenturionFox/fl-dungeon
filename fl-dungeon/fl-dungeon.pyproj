@@ -22,10 +22,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="adventurelib\classes\jsonobj.py">
+    <Compile Include="adventurelib\classes\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="adventurelib\classes\__init__.py">
+    <Compile Include="adventurelib\jsonobj\stats.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="adventurelib\jsonobj\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="adventurelib\localization.py">
@@ -57,6 +60,9 @@
   <ItemGroup>
     <Folder Include="adventurelib\" />
     <Folder Include="adventurelib\classes\" />
+    <Folder Include="adventurelib\jsonobj\" />
+    <Folder Include="adventurelib\jsonobj\schema\" />
+    <Folder Include="E:\Bridger\Source\Git\fl-dungeon\fl-dungeon\adventurelib\jsonobj\schema\" />
     <Folder Include="adventurelib\res\locale\" />
     <Folder Include="adventurelib\res\" />
     <Folder Include="adventurelib\res\adventurerType\" />
