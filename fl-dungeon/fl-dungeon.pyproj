@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,7 +12,8 @@
     <OutputPath>.</OutputPath>
     <Name>fl-dungeon</Name>
     <RootNamespace>fl-dungeon</RootNamespace>
-    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>{e8a5e029-e32c-4293-9a93-83522c8b8b43}</InterpreterId>
+    <InterpreterVersion>3.5</InterpreterVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +24,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="adventurelib\classes\__init__.py">
+    <Compile Include="adventurelib\entity\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="adventurelib\jsonobj\stats.py">
@@ -59,32 +61,29 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="adventurelib\" />
-    <Folder Include="adventurelib\classes\" />
     <Folder Include="adventurelib\jsonobj\" />
     <Folder Include="adventurelib\jsonobj\schema\" />
+    <Folder Include="adventurelib\entity\" />
+    <Folder Include="adventurelib\res\entity\adventurer\" />
     <Folder Include="adventurelib\res\locale\" />
     <Folder Include="adventurelib\res\" />
-    <Folder Include="adventurelib\res\adventurerType\" />
-    <Folder Include="adventurelib\res\adventurer\" />
-    <Folder Include="adventurelib\res\adventurer\classes\" />
-    <Folder Include="adventurelib\res\adventurer\stats\" />
+    <Folder Include="adventurelib\res\entity\adventurer\classes\" />
+    <Folder Include="adventurelib\res\entity\adventurer\stats\" />
     <Folder Include="adventurelib\res\util\" />
     <Folder Include="adventurelib\res\adventurer\" />
     <Folder Include="adventurelib\res\entity\" />
-    <Folder Include="adventurelib\res\entity\enemies\" />
-    <Folder Include="adventurelib\res\items\" />
     <Folder Include="adventurelib\tests\" />
     <Folder Include="adventurelib\tests\classes\" />
     <Folder Include="adventurelib\tests\res\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="adventurelib\res\adventurer\adventurerTypeList.json" />
-    <Content Include="adventurelib\res\adventurer\classes\wizard.json">
+    <Content Include="adventurelib\res\entity\adventurer\adventurerClassList.json" />
+    <Content Include="adventurelib\res\entity\adventurer\classes\wizard.json">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="adventurelib\res\adventurer\stats\wizard.stats.json" />
+    <Content Include="adventurelib\res\entity\adventurer\stats\wizard.stats.json" />
     <Content Include="adventurelib\res\entity\entityTypeList.json" />
-    <Content Include="adventurelib\res\locale\en.json" />
+    <Content Include="adventurelib\res\locale\en_US.json" />
     <Content Include="adventurelib\res\util\starterkit.empty.json" />
     <Content Include="adventurelib\res\util\stats.base.json">
       <SubType>Code</SubType>
@@ -102,6 +101,18 @@
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
       <Architecture>X64</Architecture>
+    </Interpreter>
+    <Interpreter Include="env\">
+      <Id>{e8a5e029-e32c-4293-9a93-83522c8b8b43}</Id>
+      <BaseInterpreter>{525d3650-55aa-49fa-89e2-70bf844a19c5}</BaseInterpreter>
+      <Version>3.5</Version>
+      <Description>env (python-3.6)</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\python.exe</WindowsInterpreterPath>
+      <LibraryPath>Lib\</LibraryPath>
+      <PathEnvironmentVariable>
+      </PathEnvironmentVariable>
+      <Architecture>X86</Architecture>
     </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

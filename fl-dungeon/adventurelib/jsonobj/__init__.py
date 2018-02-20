@@ -61,6 +61,7 @@ class JsonIntegerRange(JsonDataObject):
     """Represents a json-serializable integer range."""
     def __init__(self, data=None):
         self._random = Random()
+        self._range = (0,0)
         super(JsonIntegerRange, self).__init__(data)
 
     def __int__(self):
@@ -72,52 +73,92 @@ class JsonIntegerRange(JsonDataObject):
         return 0
 
     def getRandomIntFromRange(self):
-        if self._min == self._max:
-            return self._min
-        return self._random.randint(self._min, self._max)
+        if self.Min == self.Max:
+            return self.Min
+        return self._random.randint(self.Min, self.Max)
 
     def decode(self, data):
         """Decodes the integer range from an int value, a list or tuple of values, or a dict."""
         if is_int(data):
-            self._min = self._max = int(data)
+            self.Min = self.Max = int(data)
         elif isinstance(data, list, tuple):
             if len(data) == 0:
-                self._min = self._max = 0
+                self.Min = self.Max = 0
             elif len(data) == 1:
                 if not is_int(0 if data[0] is None else data[0]): 
                     raise NotImplementedError("The list contained invalid data at position 0: %s" % data[0])
                 else:
-                    self._min = self._max = int(0 if data[0] is None else data[0])
+                    self.Min = self.Max = int(0 if data[0] is None else data[0])
             else:
                 pData = (0 if data[0] is None else data[0], 0 if data[1] is None else data[1])
-                self._min = min(pData)
-                self._max = max(pData)
+                self.Min = min(pData)
+                self.Max = max(pData)
         elif isinstance(data, dict):
-            pData = (data.get("min", 0), data.get("max", 0))
-            self._min = min(pData)
-            self._max = max(pData)
+            pData = (data.get('min', 0), data.get('max', 0))
+            self.Min = min(pData)
+            self.Max = max(pData)
         else:
             raise NotImplementedError("The type %s cannot be used to initialize a JsonIntegerRange." % data.__class__)
 
     def encode(self):
         """Encodes the range as a JSON formatted list.  For zero-length ranges, encodes the int value."""
-        if self._min == self._max:
-            return self._min
-        return [self._min, self._max]
+        if self.Min == self.Max:
+            return self.Min
+        return [self.Min, self.Max]
+
+    @property
+    def Min(self):
+        """Gets the min value as an int"""
+        return int(min(self._range))
+
+    @Min.setter
+    def Min(self, value):
+        """Sets the min value to an int.  If set to None, the value is reset to 0. Note that if Min is set higher than Max, Max becomes Min and Min becomes Max."""
+        if value is None:
+            self._range[0] = 0
+        elif not is_int(value):
+            raise TypeError("Cannot set property Min to a non-int value")
+        else:
+            self._range[0] = int(value)
+
+    @property
+    def Max(self):
+        """Gets the max value."""
+        return int(max(self._min, self._max))
+
+    @Max.setter
+    def Max(self, value):
+        """Sets the max value to an int.  If set to None, the value is reset to 0.  Note that if Max is set below Min, Min becomes Max and Max becomes Min."""
+        if value is None:
+            self._range[1] = 0
+        elif not is_int(value):
+            raise TypeError("Cannot set property Max to a non-int value")
+        else:
+            self._range[1] = int(value)
 
 class JsonFileReference(JsonDataObject):
     """Represents a JSON file data object reference."""
     
     cached_entries = {}
 
+    def __init__(self, data=None):
+        """Initializes the JsonFileReference object."""
+        self._id = ''
+        self._name = ''
+        self._package = ''
+        self._resourcePath = ''
+        self._class = ''
+        super(JsonFileReference, self).__init__(data)
+
     @staticmethod
     def get_default_data():
-        """Gets an empty json file reference data."""
+        """Gets an empty json file reference's data."""
         return {
-            "id": None,
-            "name": None,
-            "package": None,
-            "resource": None
+            'id': '',
+            'name': '',
+            'package': '',
+            'resource': '',
+            'class': ''
         }
 
     @staticmethod
@@ -165,3 +206,43 @@ class JsonFileReference(JsonDataObject):
             'resource': self._resourcePath,
             'class': self._class
         }
+
+    @property
+    def Id(self):
+        return str(self._id)
+
+    @Id.setter
+    def Id(self, value):
+        self._id = value
+
+    @property
+    def Name(self):
+        return str(self._name)
+
+    @Name.setter
+    def Name(self, value):
+        self._name = value
+
+    @property
+    def Package(self):
+        return str(self._package)
+
+    @Package.setter
+    def Package(self, value):
+        self._package = value
+
+    @property
+    def ResourcePath(self):
+        return str(self._resourcePath)
+
+    @ResourcePath.setter
+    def ResourcePath(self, value):
+        self._resourcePath = value
+
+    @property
+    def Class(self):
+        return str(self._class)
+
+    @Class.setter
+    def Class(self, value):
+        self._class = value

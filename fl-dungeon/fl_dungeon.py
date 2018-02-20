@@ -11,7 +11,6 @@ import sys
 from adventurelib.localization import t
 
 def main(*args):
-
     pygame.init()
 
 if __name__ == "__main__":
