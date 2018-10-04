@@ -68,6 +68,23 @@ class Entity(object):
 
         return target.damage(self.Strength)
 
+    def magikAttack(self, target):
+        if not isinstance(target, Entity):
+            return (False,0)
+        
+        target.alertAttacker(self, self._magik)
+
+        if autil.randomWithMod(self._random, self._luck) > 0.9:
+            print("Critical hit!")
+            return target.damage(self._magik, critical=True)
+        
+        elif autil.randomWithMod(self._random, target.Luck) > 0.9:
+            if isinstance(target, PlayerCharacter):
+                print("The spell misses!")
+            return target.damage(self._magik, miss=True)
+
+        return target.damage(self.Magik)
+
     def alertAttacker(self, attacker, attackStrength):
         if self._target is None or attackStrength > self._lastDamage:
             self._target = attacker
@@ -95,6 +112,10 @@ class Entity(object):
     @property
     def MaxHealth(self):
         return self._maxHP
+
+    @MaxHealth.setter
+    def MaxHealth(self, value):
+        self._maxHP = value
     
     @property
     def Strength(self):
@@ -111,7 +132,7 @@ class Entity(object):
     @property
     def Armor(self):
         if(self._steadfast):
-            return self._armor + 1
+            return self._armor * 2
         return self._armor
     
     @Armor.setter
@@ -194,12 +215,24 @@ class PlayerCharacter(Entity):
             print("Your attack misses...")
         return result
 
+    def magikAttack(self, target):
+        if not isinstance(target, Entity):
+            print("You cannot cast a spell on that.")
+            return (False,0)
+        print("You cast a spell on the %s!" % target.Name)
+        result = Entity.magikAttack(self, target)
+        if result[0]:
+            print("Your spell hits, dealing %s damage!" % (result[1]))
+        else:
+            print("Your spell misses...")
+        return result
+
     def setSteadfast(self, value):
         if isinstance(value, bool):
             if value:
-                print("You steel yourself against attacks. (AC + 1)")
+                print("You steel yourself against attacks. (AC * 2)")
             elif self.IsSteadfast:
-                print("You relax your guard. (AC - 1)")
+                print("You relax your guard. (AC / 2)")
         Entity.setSteadfast(self, value)
             
     @property

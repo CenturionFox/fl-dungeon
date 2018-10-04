@@ -7,45 +7,49 @@
 import adventurelib
 import pygame
 import sys
+import time
 from adventurelib.localization import t
 
 this = sys.modules[__name__]
 this.gameRun = True
 
-MS_PER_UPDATE = 16.67
+TICKS_PER_SECOND = 60
+SKIP_TICKS = 1000 / 60
+MAX_FRAMESKIP = 12
+
+size = width,height = 640,480
+this.screen = pygame.display.set_mode(size)
 
 def main(*args):
     pygame.init()
 
-    screen = pygame.display.set_mode((640,480))
-    lagTime = 0
+    interpolation = 0.0
 
-    last = pygame.time.get_ticks()
+    nextTick = pygame.time.get_ticks()
     while this.gameRun:
-        current = pygame.time.get_ticks()
-        elapsed = current - last
-        last = current
-        lagTime += elapsed
-
-        processInput()
-
-        while lagTime >= MS_PER_UPDATE:
+        loops = 0
+        
+        while pygame.time.get_ticks() > nextTick and loops < MAX_FRAMESKIP:
             update()
-            lagTime -= MS_PER_UPDATE
+            nextTick = nextTick + SKIP_TICKS
+            loops = loops + 1
+            pass
 
-        render(screen, lagTime/MS_PER_UPDATE)
-
-def processInput():
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            this.gameRun = False
+        interpolation = (pygame.time.get_ticks() + SKIP_TICKS - nextTick) / SKIP_TICKS
+        render(interpolation)
 
 def update():
-    print('update')
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+    print("update")
     pass
 
-def render(screen, percent):
-    print("draw: %f" % percent)
+def render(interpolation):
+    print("display %f" % interpolation)
+    screen.fill([0,0,0])
+
+    pygame.display.flip()
     pass
 
 if __name__ == "__main__":

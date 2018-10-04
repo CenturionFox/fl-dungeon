@@ -16,7 +16,7 @@ CharacterClasses = [
     ("Jester",1,0,0,-1,3,-40),
     ("Civilian",0,0,0,0,0,40),
     ("Necromancer",-4,5,0,0,0,-20),
-    ("Paladin",6,2,2,3,1,-70)
+    ("Paladin",6,2,2,3,2,-70)
 ]
 ###Character Class Stats End###
 

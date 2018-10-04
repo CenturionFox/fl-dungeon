@@ -58,7 +58,7 @@ def battleLoop(player, playerTeam=[], enemies=[]):
         #player moves first
 
         while True:
-            playerMove = input("You stand ready.\n(1) Attack\n(2) Stay your Blade\n(3) Flee!\n\nWhat will you do? ")
+            playerMove = input("You stand ready.\n(1) Attack\n(2) Cast\n(3) Stay your Blade\n(4) Flee!\n\nWhat will you do? ")
 
             if playerMove == "1":
                 # The player valiantly attacks the enemy!
@@ -91,13 +91,29 @@ def battleLoop(player, playerTeam=[], enemies=[]):
                     player.attack(target)
                     if target.IsDead:
                         print("The %(target)s has been slain." % {"target": target.Name})
-                    break;
+                    break
                 break
             elif playerMove == "2":
+                # The player attempts to cast a spell!
+                if player.Magik == 0:
+                    print("You don't have enough magik to do that!")
+                    continue;
+                print("You cast a spell on all of the enemies!")
+                for target in livingEnemies:
+                    input("Press ENTER to continue...")
+                    autil.clear()
+                    player.magikAttack(target)
+                    if target.IsDead:
+                        if target.HP * -1 >= target.MaxHealth:
+                            print("The %(target)s has been slain with prejudice." % {"target": target.Name})
+                        else:
+                            print("The %(target)s has been slain." % {"target": target.Name})
+                break
+            elif playerMove == "3":
                 # The player stands at the ready
                 player.setSteadfast(True)
                 break
-            elif playerMove == "3":
+            elif playerMove == "4":
                 escapeBlocked = False
                 awareEnemies,obliviousEnemies=tryNoticeAll(livingEnemies, livingTeammates, player)
                 if len(awareEnemies) > 0:
